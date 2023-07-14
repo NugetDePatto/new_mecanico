@@ -17,6 +17,7 @@ class _ConfigViewState extends State<ConfigView> {
         title: const Text('Configuracion'),
       ),
       body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20),
         child: Column(
           children: [
             SwitchListTile(
@@ -28,21 +29,35 @@ class _ConfigViewState extends State<ConfigView> {
                 });
               },
             ),
-            Text(
-              'Tamaño de la fuente',
-              style: TextStyle(fontSize: configC.tamanoFuente),
-            ),
-            Slider(
-              value: configC.tamanoFuente,
-              min: 10,
-              max: 30,
-              divisions: 4,
-              label: configC.tamanoFuente.toString(),
-              onChanged: (double value) {
-                setState(() {
-                  configC.setTamanoFuente(value);
-                });
-              },
+            ListTile(
+              title: Text(
+                'Tamaño de la fuente',
+                style: TextStyle(fontSize: configC.tamanoFuente),
+              ),
+              trailing: DropdownButton<double>(
+                value: configC.tamanoFuente,
+                items: const [
+                  DropdownMenuItem(
+                    value: 16,
+                    child: Text('Chico'),
+                  ),
+                  DropdownMenuItem(
+                    value: 20,
+                    child: Text('Mediano'),
+                  ),
+                  DropdownMenuItem(
+                    value: 25,
+                    child: Text('Grande'),
+                  ),
+                ],
+                onChanged: (double? value) {
+                  setState(() {
+                    if (value != null) {
+                      configC.setTamanoFuente(value);
+                    }
+                  });
+                },
+              ),
             ),
           ],
         ),

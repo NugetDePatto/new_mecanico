@@ -15,4 +15,36 @@ Future<void> initHive() async {
   Hive.registerAdapter(CocheAdapter());
   Hive.registerAdapter(ClienteAdapter());
   await Hive.openBox<Cliente>('clientes');
+  prueba();
+}
+
+prueba() {
+  Box<Cliente> clientes = Hive.box<Cliente>('clientes');
+
+  if (clientes.isEmpty) {
+    clientes.add(
+      Cliente(
+        nombre: 'nombre',
+        direccion: 'direccion',
+        telefono: 'telefono',
+        coches: [],
+      ),
+    );
+    clientes.add(
+      Cliente(
+        nombre: 'nombre2',
+        direccion: 'direccion2',
+        telefono: 'telefono2',
+        coches: [],
+      ),
+    );
+    clientes.add(
+      Cliente(
+        nombre: 'nombre3',
+        direccion: 'direccion3',
+        telefono: 'telefono3',
+        coches: [],
+      ),
+    );
+  }
 }

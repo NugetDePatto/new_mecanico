@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../vista/Configuraciones/config_view.dart';
-
 class AppBarUtil extends StatefulWidget implements PreferredSizeWidget {
   final String titulo;
   final bool? centerTitle;
@@ -24,23 +22,7 @@ class AppBarUtilState extends State<AppBarUtil> {
     return AppBar(
       title: Text(widget.titulo),
       centerTitle: widget.centerTitle ?? false,
-      actions: [
-        IconButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const ConfigView(),
-              ),
-            ).then((value) {
-              if (widget.onBack != null) {
-                widget.onBack!(value);
-              }
-            });
-          },
-          icon: const Icon(Icons.settings),
-        ),
-      ],
+      actions: widget.actions,
     );
   }
 }

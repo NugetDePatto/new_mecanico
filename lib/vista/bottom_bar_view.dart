@@ -3,6 +3,8 @@ import 'package:new_mecanico/controlador/bottom_bar_controller.dart';
 import 'package:new_mecanico/utils/appBar_utils.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 
+import 'Configuraciones/config_view.dart';
+
 class BottomBarView extends StatefulWidget {
   const BottomBarView({super.key});
 
@@ -15,8 +17,25 @@ class _BottomBarViewState extends State<BottomBarView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarUtil('Taller Mecanico', key: GlobalKey<AppBarUtilState>()),
-      body: con.vistas[con.index],
+      appBar: AppBarUtil(
+        'Taller Mecanico',
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ConfigView(),
+                ),
+              ).then((value) {
+                setState(() {});
+              });
+            },
+            icon: const Icon(Icons.settings),
+          ),
+        ],
+      ),
+      body: con.vista(),
       floatingActionButton: FloatingActionButton.large(
         shape: const StadiumBorder(),
         onPressed: () {
@@ -51,7 +70,7 @@ class _BottomBarViewState extends State<BottomBarView> {
               color: con.sePresiono(isActive, context),
             ),
             Text(
-              con.nombres[index],
+              con.titulos[index],
               style: TextStyle(
                 color: con.sePresiono(isActive, context),
               ),
