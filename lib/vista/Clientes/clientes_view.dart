@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:new_mecanico/controlador/clientes_controller.dart';
-import 'package:new_mecanico/utils/apariencia_utils.dart';
 import 'package:new_mecanico/widgets/tarjeta_cliente_widget.dart';
 
 class ClientesView extends StatefulWidget {
@@ -16,12 +15,8 @@ class _ClientesViewState extends State<ClientesView> {
   Widget build(BuildContext context) {
     return con.clientesOrdenados.isEmpty
         ? Center(
-            child: Text(
-              'No hay clientes',
-              style: TextStyle(
-                fontSize: getTamanoFuente(),
-              ),
-            ),
+            child: Text('No hay clientes',
+                style: Theme.of(context).textTheme.bodyLarge),
           )
         : ListView.builder(
             shrinkWrap: true,
@@ -29,6 +24,10 @@ class _ClientesViewState extends State<ClientesView> {
             itemCount: con.clientesOrdenados.length,
             itemBuilder: (BuildContext context, int index) {
               return TarjetaCliente(
+                onTap: () {
+                  con.eliminarCliente(con.clientesOrdenados[index]);
+                  setState(() {});
+                },
                 cliente: con.clientesOrdenados[index],
               );
             },

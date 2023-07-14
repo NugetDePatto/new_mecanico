@@ -22,29 +22,27 @@ prueba() {
   Box<Cliente> clientes = Hive.box<Cliente>('clientes');
 
   if (clientes.isEmpty) {
-    clientes.add(
-      Cliente(
-        nombre: 'nombre',
-        direccion: 'direccion',
-        telefono: 'telefono',
-        coches: [],
-      ),
+    Cliente cliente1 = Cliente(
+      nombre: 'Juan',
+      telefono: '123456789',
+      direccion: 'Calle 1',
+      coches: [],
     );
-    clientes.add(
-      Cliente(
-        nombre: 'nombre2',
-        direccion: 'direccion2',
-        telefono: 'telefono2',
-        coches: [],
-      ),
+    Cliente cliente2 = Cliente(
+      nombre: 'Pedro',
+      telefono: '987654321',
+      direccion: 'Calle 2',
+      coches: [],
     );
-    clientes.add(
-      Cliente(
-        nombre: 'nombre3',
-        direccion: 'direccion3',
-        telefono: 'telefono3',
-        coches: [],
-      ),
+    Cliente cliente3 = Cliente(
+      nombre: 'Luis',
+      telefono: '123456789',
+      direccion: 'Calle 3',
+      coches: [],
     );
+
+    clientes.put(cliente1.id, cliente1);
+    clientes.put(cliente2.id, cliente2);
+    clientes.put(cliente3.id, cliente3);
   }
 }

@@ -12,4 +12,8 @@ class ClienteController {
     clientesOrdenados.sort((a, b) => a.nombre.compareTo(b.nombre));
     return clientesOrdenados;
   }
+
+  void eliminarCliente(Cliente cliente) {
+    clientesBox.delete(cliente.id);
+  }
 }

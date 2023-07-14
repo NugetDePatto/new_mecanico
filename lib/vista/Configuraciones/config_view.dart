@@ -30,15 +30,12 @@ class _ConfigViewState extends State<ConfigView> {
               },
             ),
             ListTile(
-              title: Text(
-                'Tamaño de la fuente',
-                style: TextStyle(fontSize: configC.tamanoFuente),
-              ),
+              title: const Text('Tamaño de la fuente'),
               trailing: DropdownButton<double>(
                 value: configC.tamanoFuente,
                 items: const [
                   DropdownMenuItem(
-                    value: 16,
+                    value: 15,
                     child: Text('Chico'),
                   ),
                   DropdownMenuItem(

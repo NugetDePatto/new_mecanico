@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:new_mecanico/controlador/bottom_bar_controller.dart';
-import 'package:new_mecanico/utils/appBar_utils.dart';
+import 'package:new_mecanico/widgets/appBar_widget.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 
 import 'Configuraciones/config_view.dart';
@@ -17,7 +17,7 @@ class _BottomBarViewState extends State<BottomBarView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarUtil(
+      appBar: CustomAppBar(
         'Taller Mecanico',
         actions: [
           IconButton(
@@ -71,8 +71,10 @@ class _BottomBarViewState extends State<BottomBarView> {
             ),
             Text(
               con.titulos[index],
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 color: con.sePresiono(isActive, context),
+                fontSize: Theme.of(context).textTheme.bodySmall!.fontSize,
               ),
             ),
           ],

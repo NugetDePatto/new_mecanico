@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:new_mecanico/controlador/main_controller.dart';
+import 'package:new_mecanico/utils/main_utils.dart';
 import 'package:new_mecanico/vista/bottom_bar_view.dart';
 
 Future<void> main() async {
@@ -18,9 +18,23 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'MechanX',
         theme: ThemeData(
-          colorSchemeSeed: Colors.orangeAccent,
+          colorSchemeSeed: Colors.blue,
           brightness: brightness,
           useMaterial3: true,
+          textTheme: TextTheme(
+            bodyLarge: TextStyle(
+              fontSize: fontSize,
+            ),
+            bodyMedium: TextStyle(
+              fontSize: fontSize,
+            ),
+            bodySmall: TextStyle(
+              fontSize: fontSize * 0.8,
+            ),
+            titleLarge: TextStyle(
+              fontSize: fontSize + 3,
+            ),
+          ),
         ),
         home: const BottomBarView(),
       ),
